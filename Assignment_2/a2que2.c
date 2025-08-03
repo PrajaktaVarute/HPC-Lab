@@ -3,8 +3,8 @@
 
 int main()
 {
-    long num_steps = 100000000;
-    double step = 1.0 / (double)num_steps;
+    long total = 100000000;
+    double step = 1.0 / (double)total;
     double sum = 0.0, pi = 0.0;
     double start = omp_get_wtime();
 #pragma omp parallel
@@ -12,7 +12,7 @@ int main()
         double x;
         double local_sum = 0.0;
 #pragma omp for
-        for (long i = 0; i < num_steps; i++)
+        for (long i = 0; i < total; i++)
         {
             x = (i + 0.5) * step;
             local_sum += 4.0 / (1.0 + x * x);
